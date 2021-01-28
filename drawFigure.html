@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />  
+    <title>百度地图绘制图形</title>
+    <link rel="stylesheet" href="./res/lib/bootstrap/4.0.0/css/bootstrap.css">
+    <link rel="stylesheet" href="./res/lib/jeDate/css/jedate.css">
+    <link rel="stylesheet" href="./res/css/style.css">
+    <link rel="stylesheet" href="./res/css/styleUnicom.css">
+    <style>
+        *{
+            margin:0;
+        }
+        html,body{
+            height: 100%;
+        }
+        .custom-select {
+            background: url(./res/img/select-arrow.png) no-repeat right center;
+            background-size: auto 10px;
+        }
+        .wicon {
+            background: #fff url(./res/img/calendar.png) center right no-repeat;
+        }
+        div.map-container{
+            width: 100%;
+            height: 100%;
+        }
+        .get-points{
+            position: absolute;
+            top:10px;
+            right:10px;
+            z-index: 9999;
+        }
+        .form-content{
+            position: absolute;
+            top:10px;
+            left:10px;
+            font-size: 14px;
+            padding: 6px 10px;
+            background: #fff;
+            border-radius: 4px;
+            box-shadow: 0 0 5px rgba(0,0,0,.2);
+        }
+        .form-content select,
+        .form-content input,
+        .form-content button{
+            font-size: 14px;
+        }
+        .window-info{
+            display: none;
+            position: absolute;
+            top:50%;
+            left:50%;
+            min-width: 260px;
+            min-height: 100px;
+            background: #fff;
+            border-radius: 4px;
+            box-shadow: 0 0 5px rgba(0,0,0,.2);
+        }
+        .window-info .wi-head{
+            height: 40px;
+            line-height: 40px;
+            padding: 0 10px;
+            font-size: 15px;
+            background: #f2f2f2;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            border-bottom: 1px solid rgba(0,0,0,.05);
+        }
+        .window-info .wi-body{
+            font-size: 14px;
+            padding: 10px;
+        }
+        .window-info .wi-body ul{
+            margin: 0;
+        }
+        .window-info .wi-body ul li{
+            line-height: 26px;
+            white-space: nowrap;
+        }
+        .window-info .wi-body ul li label{
+            display: inline-block;
+            width: 80px;
+            text-align: right;
+            vertical-align: middle;
+            margin-bottom: 0;
+        }
+        .window-info .wi-body ul li span{
+            display: inline-block;
+            margin-left: 5px;
+            vertical-align: middle;
+            width: calc(100% - 80px);
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+    </style>
+</head>
+<body>
+    <div class="map-container" id="mapContainer"></div>
+    <div class="form-content">
+        <div class="form-inline">
+            <div class="form-group">
+                <label class="control-label">分公司:</label>
+                <select class="form-control custom-select" style="width:120px;">
+                    <option value="1">广东省</option>
+                    <option value="2">广西省</option>
+                    <option value="3">福建省</option>
+                    <option value="4">湖南省</option>
+                    <option value="5">山东省</option>                            
+                </select>
+            </div>
+            <div class="form-group" style="margin-left:20px;">
+                <label class="control-label">查询月份:</label>
+                <input type="text" id="startDate" class="form-control wicon" readonly placeholder="请选择日期" style="width:120px;padding-right:30px;">
+                至
+                <input type="text" id="endDate" class="form-control wicon" readonly placeholder="请选择日期" style="width:120px;padding-right:30px;">
+            </div>
+            <button class="btn btn-normal" style="margin-left:20px;">查询</button>
+        </div>
+    </div>
+    <!-- <button class="get-points">获取选中点</button> -->
+    <!-- 多边形详情信息 -->
+    <div class="window-info" id="windowInfo">
+        <h2 class="wi-head">区域订单情况</h2>
+        <div class="wi-body">
+            <ul>
+                <li><label>客户数 :</label><span>--</span></li>
+                <li><label>总订货量 :</label><span>--</span></li>
+                <li><label>户均订货量 :</label><span>--</span></li>
+            </ul>
+        </div>
+    </div>
+    <script src="./res/js/jquery.js"></script>
+    <script src="./res/lib/jeDate/js/jeDate.js"></script>
+    <script src="https://api.map.baidu.com/api?v=3.0&ak=hbGHmga7m3o0SCqGXREiTBQduY3P6jCj"></script>
+    <script src="./res/lib/ECharts/BMapLib.GeoUtils.js"></script>
+    <script src="./res/js/data.js"></script>
+    <script src="./res/js/base.js"></script>
+    <script src="./res/js/index.js"></script>
+</body>
+</html>
