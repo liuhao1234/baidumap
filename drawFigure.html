@@ -15,13 +15,6 @@
         html,body{
             height: 100%;
         }
-        .custom-select {
-            background: url(./res/img/select-arrow.png) no-repeat right center;
-            background-size: auto 10px;
-        }
-        .wicon {
-            background: #fff url(./res/img/calendar.png) center right no-repeat;
-        }
         div.map-container{
             width: 100%;
             height: 100%;
@@ -96,6 +89,13 @@
             text-overflow: ellipsis;
             white-space: nowrap;
         }
+        .custom-select {
+            background: url(./res/img/select-arrow.png) no-repeat right center;
+            background-size: auto 10px;
+        }
+        .wicon {
+            background: #fff url(./res/img/calendar.png) center right no-repeat;
+        }
     </style>
 </head>
 <body>
@@ -121,7 +121,7 @@
             <button class="btn btn-normal" style="margin-left:20px;">查询</button>
         </div>
     </div>
-    <!-- <button class="get-points">获取选中点</button> -->
+    <button class="get-points">获取选中点</button>
     <!-- 多边形详情信息 -->
     <div class="window-info" id="windowInfo">
         <h2 class="wi-head">区域订单情况</h2>
@@ -137,6 +137,7 @@
     <script src="./res/lib/jeDate/js/jeDate.js"></script>
     <script src="https://api.map.baidu.com/api?v=3.0&ak=hbGHmga7m3o0SCqGXREiTBQduY3P6jCj"></script>
     <script src="./res/lib/ECharts/BMapLib.GeoUtils.js"></script>
+    <script src="./res/lib/ECharts/BMapLib.PolygonCover.js"></script>
     <script src="./res/js/data.js"></script>
     <script src="./res/js/base.js"></script>
     <script src="./res/js/index.js"></script>
